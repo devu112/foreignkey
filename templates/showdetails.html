@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url(https://media.istockphoto.com/id/1294297693/vector/abstract-background-of-paint-in-colorful-effects.jpg?s=612x612&w=0&k=20&c=vCzf3FRkq72nv01KqQa9J9OrBaVhUzvaxUmjk3aa7TE=);
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-3 text-danger">Show Details of Student</h1>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Address</th>
+                    <th>Age</th>
+                    <th>Joining Date</th>
+                    <th>Course</th>
+                    <th>Course Fee</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for s in students %}
+                <tr>
+                    <td>{{ s.studentname }}</td>
+                    <td>{{ s.address }}</td>
+                    <td>{{ s.age }}</td>
+                    <td>{{ s.joiningdate }}</td>
+                    <td>{{ s.course.coursename }}</td>
+                    <td>{{ s.course.fee }}</td>
+                    <td><a href="{% url 'edit' s.id %}" class="btn btn-primary">Edit</a></td>
+                    <td><a href="{% url 'delete' s.id %}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
